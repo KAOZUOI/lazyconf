@@ -48,4 +48,16 @@ return {
       vim.cmd.colorscheme("catppuccin")
     end,
   },
+
+  -- colorizer
+  {
+    "norcalli/nvim-colorizer.lua",
+    config = function()
+      require('colorizer').setup({
+        '*';
+      }, {
+      mode = 'background';
+    })
+    end
+  }
 }
