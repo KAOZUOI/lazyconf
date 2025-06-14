@@ -31,3 +31,12 @@ opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize", "help", "glob
 g.python3_host_prog = "python3"
 g.python_host_prog = "python"
 
+
+-- Define highlight groups for Go semantic tokens
+vim.api.nvim_set_hl(0, "@lsp.type.function.go", { link = "Function" })
+vim.api.nvim_set_hl(0, "@lsp.type.method.go", { link = "Function" })
+vim.api.nvim_set_hl(0, "@lsp.type.parameter.go", { link = "Identifier" })
+vim.api.nvim_set_hl(0, "@lsp.type.variable.go", { link = "Identifier" })
+vim.api.nvim_set_hl(0, "@lsp.type.interface.go", { link = "Type" })
+vim.api.nvim_set_hl(0, "@lsp.type.struct.go", { link = "Type" })
+vim.api.nvim_set_hl(0, "@lsp.type.namespace.go", { link = "Namespace" })

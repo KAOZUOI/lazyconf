@@ -12,6 +12,22 @@ return {
                 mode = { "n", "v" },
                 desc = "Format Injected Langs",
             },
+            {
+                "<leader>cf",
+                function()
+                    require("conform").format({ formatters = { "gofumpt", "goimports" }, lsp_fallback = true })
+                end,
+                mode = { "n", "v" },
+                desc = "Format Go Code",
+            },
+            {
+                "<leader>ci",
+                function()
+                    require("conform").format({ formatters = { "goimports" }, lsp_fallback = false })
+                end,
+                mode = { "n", "v" },
+                desc = "Run goimports (Organize Imports)",
+            },
         },
         opts = {
             formatters_by_ft = {
@@ -22,6 +38,7 @@ return {
                         return { "isort", "black" }
                     end
                 end,
+                go = { "gofumpt", "goimports" },
             },
         },
     },
@@ -50,6 +67,7 @@ return {
                         vim.diagnostic.severity.INFO,
                         vim.diagnostic.severity.WARN,
                         vim.diagnostic.severity.ERROR,
+                        vim.diagnostic.severity.HINT,
                     },
                     prefix = "icons",
                 },
@@ -68,10 +86,13 @@ return {
             -- autoformat = false,
             format_notify = true,
             servers = {
-                pylance = require("plugins.lsp.servers.pylance"),
+                -- gopls = require("plugins.lsp.servers.gopls"),
+                -- pylance = require("plugins.lsp.servers.pylance"),
                 -- ruff = require("plugins.lsp.servers.ruff"),
                 clangd = require("plugins.lsp.servers.clangd"),
                 lua_ls = require("plugins.lsp.servers.lua_ls"),
+            },
+            setup = {
             },
         },
     },
